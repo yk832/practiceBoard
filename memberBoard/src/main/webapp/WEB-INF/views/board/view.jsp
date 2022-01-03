@@ -35,7 +35,7 @@ $('.replyModify').click(function(){
 	${view.content}<br />
 
 <div>
-	<a href="#">게시물수정</a>, <a href="#">게시물 삭제</a> , <a href="./getBoardList">게시물 목록</a>
+	<a href="">게시물수정</a>, <a href="#">게시물 삭제</a> , <a href="./getBoardList">게시물 목록</a>
 </div>
 
 

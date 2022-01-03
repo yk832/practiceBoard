@@ -8,7 +8,7 @@ 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<%@ taglib uri="http://java.sun.com/jsp/
 </head>
 <body>
 
-<form action="modifyForm" method="post">
+<form action="insertBoards" method="post">
 
 	<label>제목</label>
 	<input type="text" name="title" /><br />

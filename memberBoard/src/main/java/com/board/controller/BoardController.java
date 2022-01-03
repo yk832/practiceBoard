@@ -19,6 +19,7 @@ public class BoardController {
 	@Inject
 	BoardService svc;
 
+	//게시글 목록 조회 
 	@RequestMapping(value = "/getBoardList")
 	public String getBoardList(Model model) {
 		
@@ -29,12 +30,14 @@ public class BoardController {
 		return "board/boardList";
 	}
 	
+	//게시글 작성 폼
 	@RequestMapping(value = "/boardForm")
 	public String boardForm(Model model)throws Exception {
 		
 		return "board/boardForm";
 	}
 	
+	//게시글 등록
 	@RequestMapping(value = "/insertBoards")
 	public String insertBoard(BoardsVO vo) throws Exception {
 		
@@ -43,6 +46,7 @@ public class BoardController {
 		return "redirect:/board/getBoardList";
 	}
 	
+	//게시글 상세보기
 	@RequestMapping(value = "/getView")
 	public String getView(@RequestParam("bno")int bno, Model model) throws Exception {
 		//System.out.println(bno);
