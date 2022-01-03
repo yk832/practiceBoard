@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.board.mappers.boardsMapper">
+
+ <!-- 게시글 목록  -->
+<select id="goBoardList" resultType="com.board.model.BoardsVO">
+	SELECT * FROM MEMBER_BOARD 
+</select>
+
+<!-- 게시글 등록  -->
+<insert id="insertBoards" parameterType="com.board.model.BoardsVO" >
+	
+	INSERT INTO MEMBER_BOARD ( title ,content , view_cnt , reg_id ,reg_dt ,edit_dt) 
+		VALUES (
+			#{title}, 
+			#{content}, 
+			0,
+			#{reg_id},
+			now(),
+			now()
+		)
+
+</insert>
+
+
+
+ <!-- 게시글 목록  -->
+<select id="getView" resultType="com.board.model.BoardsVO">
+	SELECT * 
+	FROM MEMBER_BOARD
+	WHERE bno = #{bno} 
+</select>
+
+<!-- 조회수 -->
+<update id="updateViewCnt" parameterType="int">
+	UPDATE MEMBER_BOARD
+		SET 
+			view_cnt = view_cnt + 1
+	WHERE 
+		BNO = #{bno}
+</update>
+
+
+
+</mapper>
