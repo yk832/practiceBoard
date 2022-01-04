@@ -1,5 +1,7 @@
-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<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +10,8 @@ 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<%@ taglib uri="http://java.sun.com/jsp/
 </head>
 <body>
 
-<form action="modifyForm" method="post">
-
+<form action="insertBoards" method="post">
+<input type="hidden" name="mode" value="insert"/> 
 	<label>제목</label>
 	<input type="text" name="title" /><br />
 	

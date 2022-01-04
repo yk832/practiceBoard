@@ -4,8 +4,56 @@
 <mapper namespace="com.board.mappers.boardsMapper">
 
  <!-- 게시글 목록  -->
-<select id="goBoardList" resultType="com.board.model.BoardsVO">
+<select id="goBoardList" resultType="com.board.model.BoardsVO" parameterType="hashMap">
 	SELECT * FROM MEMBER_BOARD 
+	<choose>
+		<when test="searchTypes.equals('title') and input != null ">
+			WHERE title LIKE concat('%',#{input},'%')
+		</when>
+		
+		<when test="searchTypes.equals('content')">
+			WHERE content LIKE concat('%',#{input},'%')
+		</when>
+		
+		<when test="searchTypes.equals('reg_id')">
+			WHERE reg_id LIKE concat('%',#{input},'%')
+		</when>
+		
+		<when test="searchTypes.equals('titleContent')">
+			WHERE title LIKE concat('%',#{input},'%')
+			or content LIKE concat('%',#{input},'%')
+		</when>
+	</choose>
+	
+	order by bno desc
+	limit #{displayPost}, #{postNum}
+</select>
+	
+	
+ <!-- 게시글 총 갯수  -->
+<select id="count" resultType="int" parameterType="hashMap">
+	SELECT count(bno) FROM MEMBER_BOARD 
+	
+	<choose>
+		<when test="searchTypes.equals('title') and input != null ">
+			WHERE title LIKE concat('%',#{input},'%')
+		</when>
+		
+		<when test="searchTypes.equals('content')">
+			WHERE content LIKE concat('%',#{input},'%')
+		</when>
+		
+		<when test="searchTypes.equals('reg_id')">
+			WHERE reg_id LIKE concat('%',#{input},'%')
+		</when>
+		
+		<when test="searchTypes.equals('titleContent')">
+			WHERE title LIKE concat('%',#{input},'%')
+			or content LIKE concat('%',#{input},'%')
+		</when>
+	</choose>
+	
+	
 </select>
 
 <!-- 게시글 등록  -->
@@ -40,6 +88,26 @@
 	WHERE 
 		BNO = #{bno}
 </update>
+
+<!-- 게시글 수정폼 저장 -->
+<update id="insertModifyForm" parameterType="com.board.model.BoardsVO">
+	UPDATE MEMBER_BOARD
+		SET 
+			title = #{title},
+			content = #{content},
+			edit_dt= now()
+	WHERE 
+		bno = #{bno}
+</update>
+
+<!-- 게시글 삭제 -->
+<delete id="deleteBoard"  parameterType="int">
+	DELETE FROM MEMBER_BOARD
+		WHERE BNO = #{bno}
+</delete>
+
+
+
 
 
 

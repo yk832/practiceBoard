@@ -14,9 +14,13 @@
 td{
 	text-align:center;
 }
+.selectBox{
+padding-left : 70px; 
+}
 
-</style>	
+</style>
 
+﻿<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>﻿
 <script>
 
 //게시글 작성 이벤트
@@ -29,12 +33,8 @@ function boardForm(){
 	
 </head>
 <body>
-<h1>
-	게시판 
-</h1>
-
-<p>boardList.jsp</p>
-
+	<h1>게시판 </h1>
+	<a href="/board/getBoardList">main</a>
 	<table>
 		<thead>
 			<tr>
@@ -57,6 +57,58 @@ function boardForm(){
 				</c:forEach>
 		</tbody>
 	</table>
-	<button onclick="boardForm()">게시글 작성</button>
+	<div class="selectBox">
+		<button onclick="boardForm()">게시글 작성</button>
+		<c:if test="${page.prev}">
+		 	<span>[ <a href="/board/getBoardList?num=${page.startPageNum - 1}&type=${search.searchType}&input=${search.input}">이전</a> ]</span>
+		</c:if>
+		
+		<c:forEach begin="${page.startPageNum}" end="${page.endPageNum}" var="num">
+			  <span>
+				   <c:if test="${select != num}">
+				   		<a href="/board/getBoardList?num=${num}&type=${search.searchType}&input=${search.input}">${num}</a>
+			 	   </c:if>    
+				  
+				  <c:if test="${select == num}">
+				   	<b>${num}</b>
+				  </c:if>
+			 </span>
+		</c:forEach>
+		
+		<c:if test="${page.next}">
+		 	<span>[ <a href="/board/getBoardList?num=${page.endPageNum + 1}&type=${search.searchType}&input=${search.input}">다음</a> ]</span>
+		</c:if>
+	</div>
+	<br>
+	<div class="selectBox">
+		<select id='searchBox'>
+			<option value="title">제목</option>
+			<option value="content">내용</option>
+			<option value="reg_id">작성자</option>
+			<option value="titleContent">제목/내용</option>
+		</select>
+		<input type="text" id="searchInput" />
+		<button onclick="search()">검색</button>
+	</div>
+
 </body>
 </html>
+
+<script>
+
+	function search(){
+
+		var optionVal = $('#searchBox').val();
+		var inputVal = $('#searchInput').val();
+		
+		if(inputVal == ""){
+			return false;
+		} 
+		
+		location.href = "/board/getBoardList?type="+optionVal+"&input="+inputVal;
+		
+		
+		
+	}
+</script>
+
