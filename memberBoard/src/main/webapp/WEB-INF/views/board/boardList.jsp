@@ -82,12 +82,12 @@ function boardForm(){
 	<br>
 	<div class="selectBox">
 		<select id='searchBox'>
-			<option value="title">제목</option>
-			<option value="content">내용</option>
-			<option value="reg_id">작성자</option>
-			<option value="titleContent">제목/내용</option>
+			<option value="title" <c:if test="${search.searchType eq 'title'}">selected</c:if> >제목</option>
+			<option value="content" <c:if test="${search.searchType eq 'content'}">selected</c:if> >내용</option>
+			<option value="reg_id" <c:if test="${search.searchType eq 'reg_id'}">selected</c:if> >작성자</option>
+			<option value="titleContent" <c:if test="${search.searchType eq 'titleContent'}">selected</c:if> >제목/내용</option>
 		</select>
-		<input type="text" id="searchInput" />
+		<input type="text" id="searchInput" value="${search.input.equals('') ? '' : search.input}"/>
 		<button onclick="search()">검색</button>
 	</div>
 
@@ -95,6 +95,7 @@ function boardForm(){
 </html>
 
 <script>
+	
 
 	function search(){
 
@@ -105,7 +106,7 @@ function boardForm(){
 			return false;
 		} 
 		
-		location.href = "/board/getBoardList?type="+optionVal+"&input="+inputVal;
+		location.href = "/board/getBoardList?searchType="+optionVal+"&input="+inputVal;
 		
 		
 		
