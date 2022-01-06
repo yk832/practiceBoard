@@ -42,6 +42,20 @@ public class ReplyServiceImpl implements ReplyService {
 		return dao.insertReply(replyVO);
 	}
 
+
+	@Override
+	public int deleteReply(int rno) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.deleteReply(rno);
+	}
+
+
+	@Override
+	public int updateReply(ReplyVO replyVO) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.updateReply(replyVO);
+	}
+
 	
 	
 }

@@ -52,6 +52,20 @@ public class ReplyDaoImpl implements ReplyDao {
 		// TODO Auto-generated method stub
 		return sql.insert(namespace + ".insertReply", replyVO);
 	}
+
+
+	@Override
+	public int deleteReply(int rno) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.delete(namespace + ".deleteReply",rno);
+	}
+
+
+	@Override
+	public int updateReply(ReplyVO replyVO) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.update(namespace + ".updateReply" ,replyVO);
+	}
 	
 
 

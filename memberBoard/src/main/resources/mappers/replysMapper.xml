@@ -8,6 +8,7 @@
 		SELECT * 
 		FROM MEMBER_REPLY
 		WHERE BNO = #{bno}
+		ORDER BY RNO DESC 
 		LIMIT #{displayPost}, #{postNum}
 	</select>
 	
@@ -20,6 +21,16 @@
 		INSERT INTO MEMBER_REPLY (BNO,RE_CONTENT,RE_WRITER) VALUES (#{bno}, #{re_content}, #{re_writer})
 	</insert>
 	
+	<delete id="deleteReply">
+		DELETE FROM MEMBER_REPLY
+		WHERE RNO = #{rno}
+	</delete>
+	
+	<update id="updateReply" parameterType="com.board.model.ReplyVO">
+		UPDATE MEMBER_REPLY
+			SET RE_CONTENT = #{re_content}
+		WHERE RNO = #{rno} and BNO = #{bno}
+	</update>
 	
 </mapper>
 

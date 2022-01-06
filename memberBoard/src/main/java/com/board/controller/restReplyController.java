@@ -42,7 +42,6 @@ public class restReplyController {
 		
 		int count = rsvc.getListCount();
 		
-		System.out.println("count====>"+count);
 		
 		page.setNum(num);
 		page.setCount(count);
@@ -56,6 +55,7 @@ public class restReplyController {
 		return map;
 	}
 	
+	//댓글 등록 
 	@RequestMapping(value = "/regReply", method = RequestMethod.POST)
 	public Map<String, Object> regReply(@RequestBody ReplyVO replyVO) throws Exception{
 		
@@ -63,8 +63,46 @@ public class restReplyController {
 		
 		try {
 			rsvc.insertReply(replyVO);
+			map.put("stauts", "OK");
 		} catch (Exception e) {
 			e.printStackTrace();
+			map.put("stauts", "false");
+		}
+		
+		
+		return map;
+	}
+	
+	//댓글 삭제 
+	@RequestMapping(value = "/deleteReply", method = RequestMethod.POST)
+	public Map<String, Object> deleteReply(@RequestParam("rno")int rno) throws Exception{
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		try {
+			rsvc.deleteReply(rno);
+			map.put("stauts", "OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+			map.put("stauts", "false");
+		}
+		
+		
+		return map;
+	}
+	
+	//댓글 수정
+	@RequestMapping(value = "/updateReply", method = RequestMethod.POST)
+	public Map<String, Object> updateReply(@RequestBody ReplyVO replyVO) throws Exception{
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		try {
+			rsvc.updateReply(replyVO);
+			map.put("stauts", "OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+			map.put("stauts", "false");
 		}
 		
 		

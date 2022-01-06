@@ -15,6 +15,10 @@ public interface ReplyDao {
 
 	int insertReply(ReplyVO replyVO)throws Exception;
 
+	int deleteReply(int rno)throws Exception;
+
+	int updateReply(ReplyVO replyVO)throws Exception;
+
 
 
 }
