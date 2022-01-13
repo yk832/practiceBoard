@@ -13,8 +13,19 @@
 $(document).ready(function(){
 	showReplyList();
 	
+	
 });
 
+//게시글삭제 (댓글 유무에 따른 처리)
+function fn_delete(bno){
+	console.log(bno)
+	var len = $('.ajax').length //댓글의 갯수
+	if(len <= 0){ //댓글이 없다면..
+		//게시글 삭제 url 
+	} else {
+		// 댓글전부삭제  url (boardController에 만들기)+ 삭제후 컨트롤러에서 게시글삭제 url로 redirect 시키기  
+	}
+}
 
 /* function sendReply(){
 	var bno = $('#bno').val();
@@ -42,7 +53,7 @@ $(document).ready(function(){
 	}); 
 	
 } */
-
+	
 
 </script>
 </head>
@@ -71,7 +82,7 @@ $(document).ready(function(){
 	</div>
 	<hr/>
 	<div>
-		<a href="./modifyForm?bno=${view.bno}">게시물수정</a>, <a href="./deleteBoard?bno=${view.bno}">게시물 삭제</a> , <a href="./getBoardList">게시물 목록</a>
+		<a href="./modifyForm?bno=${view.bno}">게시물수정</a>, <a href="#" onclick="fn_delete('${view.bno}')">게시물 삭제</a> , <a href="./getBoardList">게시물 목록</a>
 	</div>
 	
 	<hr />

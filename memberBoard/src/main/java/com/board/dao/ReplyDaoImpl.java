@@ -29,9 +29,9 @@ public class ReplyDaoImpl implements ReplyDao {
 
 
 	@Override
-	public int getListCount() throws Exception {
+	public int getListCount(int bno) throws Exception {
 		// TODO Auto-generated method stub
-		return sql.selectOne(namespace + ".getListCount");
+		return sql.selectOne(namespace + ".getListCount",bno);
 	}
 
 

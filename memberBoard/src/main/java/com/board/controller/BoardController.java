@@ -100,7 +100,7 @@ public class BoardController {
 		model.addAttribute("view",vo);
 		return "board/modifyForm";
 	}
-	//게시글 수정폼 이동
+	//게시글 삭제
 	@RequestMapping(value = "/deleteBoard")
 	public String deleteBoard(@RequestParam("bno")int bno) throws Exception {
 		

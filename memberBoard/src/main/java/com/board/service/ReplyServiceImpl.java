@@ -23,9 +23,9 @@ public class ReplyServiceImpl implements ReplyService {
 
 
 	@Override
-	public int getListCount() throws Exception {
+	public int getListCount(int bno) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.getListCount();
+		return dao.getListCount(bno);
 	}
 
 

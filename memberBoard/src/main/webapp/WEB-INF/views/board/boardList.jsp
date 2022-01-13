@@ -96,7 +96,7 @@ function boardForm(){
 
 <script>
 	
-
+	//게시글 검색 
 	function search(){
 
 		var optionVal = $('#searchBox').val();

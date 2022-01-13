@@ -40,7 +40,7 @@ public class restReplyController {
 				
 		Page page = new Page();
 		
-		int count = rsvc.getListCount();
+		int count = rsvc.getListCount(bno);
 		
 		
 		page.setNum(num);

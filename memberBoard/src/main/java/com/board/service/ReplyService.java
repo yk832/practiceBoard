@@ -13,7 +13,7 @@ public interface ReplyService {
 
 	//List<ReplyVO> getReply(int bno)throws Exception;
 
-	int getListCount()throws Exception;
+	int getListCount(int bno)throws Exception;
 
 	List<ReplyVO> getReply(int displayPost, int postNum, int bno)throws Exception;
 

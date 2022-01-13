@@ -13,8 +13,9 @@
 	</select>
 	
 	<select id="getListCount" resultType="int">
-		SELECT COUNT(RNO)
+		SELECT COUNT(*)
 		FROM MEMBER_REPLY
+		WHERE BNO = #{bno}
 	</select>
 	
 	<insert id="insertReply" parameterType="com.board.model.ReplyVO">

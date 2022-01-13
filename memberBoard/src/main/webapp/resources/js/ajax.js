@@ -95,8 +95,7 @@ function showReplyList(num){
 			//댓글이 달려있을경우 페이지번호 show
 			if( $('.reList').hasClass('ajax')  ){
 				$('.ad').show();
-				var a =  $('.ajax li').length;
-				
+//				var a =  $('.ajax li').length;
 			} else {
 				str += `<div>댓글이 없습니다.</div>`;
 				$('#replyList').html(str);
@@ -166,7 +165,7 @@ function sendReply(){
 	
 }
 
-
+//댓글 삭제 
 function deleteReply(rno){
 	
 	var dataOption = {"rno" : rno}
@@ -184,3 +183,4 @@ function deleteReply(rno){
 	
 	
 }
+
