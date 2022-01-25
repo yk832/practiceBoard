@@ -33,5 +33,16 @@
 		WHERE RNO = #{rno} and BNO = #{bno}
 	</update>
 	
+<!-- 댓글 달려있는 게시글은 innerJoin으로 지운다.
+			
+	DELETE BOARD , REPLY
+	FROM MEMBER_BOARD AS BOARD
+	INNER JOIN MEMBER_REPLY AS REPLY ON BOARD.BNO = REPLY.BNO
+	WHERE BOARD.BNO = 5 
+
+-->
+
 </mapper>
+
+
 

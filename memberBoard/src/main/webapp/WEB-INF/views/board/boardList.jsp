@@ -49,7 +49,7 @@ function boardForm(){
 				<c:forEach items="${list}" var ="list" >
 					<tr>
 						<td>${list.bno}</td>
-						<td><a href="/board/getView?bno=${list.bno}">${list.title}</a></td>
+						<td><a href="/board/getView?bno=${list.bno}&mode=view">${list.title}</a></td>
 						<td>${list.reg_dt}</td>
 						<td>${list.reg_id}</td>
 						<td>${list.view_cnt}</td>

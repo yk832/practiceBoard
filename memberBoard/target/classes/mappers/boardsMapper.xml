@@ -71,6 +71,21 @@
 
 </insert>
 
+<insert id="insertBoardFail" parameterType="com.board.model.BoardsVO" >
+	
+	INSERT INTO MEMBER_BOARD ( title ,content , view_cnt , reg_id ,reg_dt ,edit_dt) 
+		VALUES (
+			#{title}, 
+			#{content}, 
+			0,
+			#{reg_id1},
+			now(),
+			now()
+		)
+
+</insert>
+
+
 
 
  <!-- 게시글 목록  -->

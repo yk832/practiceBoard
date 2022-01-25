@@ -14,7 +14,7 @@ public interface BoardService {
 
 	public void insertBoard(BoardsVO vo) throws Exception;
 
-	public BoardsVO getView(int bno) throws Exception;
+	public BoardsVO getView(int bno ,String mode) throws Exception;
 
 	public void insertModifyForm(BoardsVO vo) throws Exception;
 

@@ -21,6 +21,8 @@ public interface BoardDao {
 
 	List<BoardsVO> getBoardList(int displayPost, int postNum, String searchType, String input);
 
+	public int insertBoardFail(BoardsVO vo);
+
 
 
 }

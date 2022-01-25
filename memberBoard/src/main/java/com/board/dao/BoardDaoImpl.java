@@ -76,5 +76,11 @@ public class BoardDaoImpl implements BoardDao {
 		return sql.selectOne(namespace + ".count", data) ;
 	}
 
+	@Override
+	public int insertBoardFail(BoardsVO vo) {
+		// TODO Auto-generated method stub
+		  return sql.insert(namespace + ".insertBoardFail", vo);
+	}
+
 
 }

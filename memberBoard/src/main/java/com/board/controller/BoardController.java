@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +26,7 @@ public class BoardController {
 	
 	@Inject
 	BoardService svc;
+	
 
 	//게시글 목록 조회 
 	@RequestMapping(value = "/getBoardList")
@@ -34,6 +36,7 @@ public class BoardController {
 			@RequestParam(required = false, defaultValue = "title", name = "searchType")String searchType,
 			@RequestParam(required = false, name="input")String input,
 			Search search) throws Exception {
+		
 		
 		search.setInput(input);
 		search.setSearchType(searchType);
@@ -82,10 +85,13 @@ public class BoardController {
 		return "redirect:/board/getBoardList";
 	}
 	
+	
 	//게시글 상세보기
 	@RequestMapping(value = "/getView")
-	public String getView(@RequestParam("bno")int bno, Model model) throws Exception {
-		BoardsVO vo = svc.getView(bno);
+	public String getView(@RequestParam("bno")int bno, @RequestParam("mode")String mode, Model model) throws Exception {
+		
+		
+		BoardsVO vo = svc.getView(bno,mode);
 	
 		model.addAttribute("view",vo);
 		
@@ -94,9 +100,9 @@ public class BoardController {
 	
 	//게시글 수정폼 이동
 	@RequestMapping(value = "/modifyForm")
-	public String modifyForm(@RequestParam("bno")int bno,Model model) throws Exception {
+	public String modifyForm(@RequestParam("bno")int bno, @RequestParam("mode")String mode, Model model) throws Exception {
 		
-		BoardsVO vo = svc.getView(bno);
+		BoardsVO vo = svc.getView(bno,mode);
 		model.addAttribute("view",vo);
 		return "board/modifyForm";
 	}
@@ -110,6 +116,18 @@ public class BoardController {
 	}
 	
 	
+	@ExceptionHandler(RuntimeException.class)
+	public String exceptionHandler(Model model, Exception e){
+
+	logger.info("exception : " + e.getMessage());
+	model.addAttribute("exception", e);
+
+	return "error/exception";
+
+	}
+
+
+
 	
 	
 }

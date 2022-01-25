@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.board.dao.BoardDao;
@@ -25,15 +26,22 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void insertBoard(BoardsVO vo) throws Exception {
 		// TODO Auto-generated method stub
-		dao.insertBoard(vo);
+		int insertCnt = 0;
+		insertCnt = dao.insertBoard(vo);
+		
+		insertCnt = dao.insertBoardFail(vo);
 	}
 
 	//게시글 상세보기
 	@Override
-	public BoardsVO getView(int bno) throws Exception {
+	public BoardsVO getView(int bno,String mode) throws Exception {
 		
+		
+		if(mode.equals("view")) {
+			dao.updateVuew(bno);
+		}
 		//게시글 조회수
-		dao.updateVuew(bno);
+	
 		
 		//게시글 상세보기
 		BoardsVO vo = dao.getView(bno);
@@ -45,6 +53,10 @@ public class BoardServiceImpl implements BoardService {
 	public void insertModifyForm(BoardsVO vo) throws Exception {
 		// TODO Auto-generated method stub
 		dao.insertModifyForm(vo);
+		/*
+		 * try { dao.insertModifyForm(vo); } catch (RuntimeException e) { // TODO:
+		 * handle exception }
+		 */
 	}
 	
 	@Override
