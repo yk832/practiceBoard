@@ -44,7 +44,7 @@ public class BoardController {
 		Page page = new Page();
 		
 		int count = svc.count(input,searchType);
-		System.out.println("count==>>>>>>>>>"+count);
+		
 		page.setNum(num);
 		page.setCount(count);
 		

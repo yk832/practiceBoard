@@ -1,4 +1,4 @@
-package com.aop;
+package com.common.aop;
 
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;

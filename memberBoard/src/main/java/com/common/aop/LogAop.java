@@ -1,4 +1,4 @@
-package com.aop;
+package com.common.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -16,7 +16,7 @@ public class LogAop {
 //		
 //	}
 	
-	@Around("within(com.aop.*)")
+	@Around("within(com.common.aop.*)")
 	public Object loggerAop(ProceedingJoinPoint joinpoint) throws Throwable{
 		
 
@@ -37,7 +37,7 @@ public class LogAop {
 	}
 	
 	
-	@Before("within(com.aop.*)")
+	@Before("within(com.common.aop.*)")
 	public void beforeMethod() {
 		System.out.println("before메소드 실행");
 	}

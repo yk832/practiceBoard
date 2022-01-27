@@ -1,4 +1,4 @@
-package com.aop;
+package com.common.aop;
 
 public class Cats {
 

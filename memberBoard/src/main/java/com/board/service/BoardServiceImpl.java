@@ -29,7 +29,7 @@ public class BoardServiceImpl implements BoardService {
 		int insertCnt = 0;
 		insertCnt = dao.insertBoard(vo);
 		
-		insertCnt = dao.insertBoardFail(vo);
+//		insertCnt = dao.insertBoardFail(vo); 트랜잭션 test
 	}
 
 	//게시글 상세보기

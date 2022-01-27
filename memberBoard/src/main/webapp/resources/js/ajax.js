@@ -1,4 +1,3 @@
-
 //수정폼
 function modiReply(rno,writer,content,bno){
 	var modiHtml = `
