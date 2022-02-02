@@ -13,6 +13,6 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
-<a href="board/getBoardList">게시판 이동t</a>
+<a href="board/getBoardList">게시판 이동ttt</a>
 </body>
 </html>
